@@ -1655,6 +1655,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2098727062033145191}
   - component: {fileID: 3374778927498582690}
+  - component: {fileID: 1798170297410814513}
   m_Layer: 0
   m_Name: UnitViking
   m_TagString: Untagged
@@ -1698,6 +1699,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.8224726, y: 1.5957301, z: 0.94874}
   m_Center: {x: -0.02172041, y: 1.0049592, z: 0.025629997}
+--- !u!114 &1798170297410814513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8326372663974757433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 238b005be66bb7845b99b33a023e8abb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _unitPrefab: {fileID: 0}
+  _unitsParent: {fileID: 0}
+  _maxHealth: 150
+  _icon: {fileID: 21300000, guid: e2014fb2c90ae1d4da1c557149cf618a, type: 3}
 --- !u!1 &8457236517232632672
 GameObject:
   m_ObjectHideFlags: 0
