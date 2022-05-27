@@ -1,12 +1,14 @@
 using System.Linq;
 using UnityEngine;
 
-public class MouseInteractionsHandler : MonoBehaviour
+public class MouseInteractionsPresenter : MonoBehaviour
 {
     [SerializeField]
     private Camera _camera;
     [SerializeField]
     private SelectableValue _selectObject;
+
+    private ISelectable _activeSelectabeObject;
 
     public void Update()
     {
@@ -21,12 +23,23 @@ public class MouseInteractionsHandler : MonoBehaviour
             return;
         }
 
+        if (_activeSelectabeObject != null)
+        {
+            _activeSelectabeObject.UnsetSelected();
+        }
+
         var selectable = hits
             .Select(hit => hit.collider.GetComponentInParent<ISelectable>())
             .Where(c => c != null)
             .FirstOrDefault();
 
         _selectObject.SetValue(selectable);
+        _activeSelectabeObject = selectable;
+
+        if (selectable != null)
+        {
+            selectable.SetSelected();
+        }
 
         if (selectable is IUnitProducer)
         {
