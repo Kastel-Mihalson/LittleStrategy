@@ -1,10 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BottomLeftUI : MonoBehaviour
+public class BottomLefPresenter : MonoBehaviour
 {
     [SerializeField]
     private TextMeshProUGUI _selectedName;

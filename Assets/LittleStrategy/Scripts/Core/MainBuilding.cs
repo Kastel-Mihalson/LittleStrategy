@@ -10,6 +10,8 @@ public class MainBuilding : MonoBehaviour, IUnitProducer, ISelectable
     private float _maxHealth = 1000;
     [SerializeField]
     private Sprite _icon;
+    [SerializeField]
+    private GameObject _selected;
 
     private string _name = "Main Building";
     private float _health = 1000;
@@ -24,5 +26,15 @@ public class MainBuilding : MonoBehaviour, IUnitProducer, ISelectable
         Instantiate(_unitPrefab, 
             new Vector3(Random.Range(-10, 10), 0, Random.Range(10, -10)),
             Quaternion.identity, _unitsParent);
+    }
+
+    public void UnsetSelected()
+    {
+        _selected.SetActive(false);
+    }
+
+    public void SetSelected()
+    {
+        _selected.SetActive(true);
     }
 }

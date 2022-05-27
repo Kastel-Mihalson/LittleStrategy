@@ -10,6 +10,8 @@ public class Tree : MonoBehaviour, ISelectable
     private float _maxHealth = 50;
     [SerializeField]
     private Sprite _icon;
+    [SerializeField]
+    private GameObject _selected;
 
     private string _name = "Tree";
     private float _health = 50;
@@ -18,4 +20,14 @@ public class Tree : MonoBehaviour, ISelectable
     public float Health => _health;
     public float MaxHealth => _maxHealth;
     public Sprite Icon => _icon;
+
+    public void UnsetSelected()
+    {
+        _selected.SetActive(false);
+    }
+
+    public void SetSelected()
+    {
+        _selected.SetActive(true);
+    }
 }
