@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -7,6 +5,8 @@ public class MouseInteractionsHandler : MonoBehaviour
 {
     [SerializeField]
     private Camera _camera;
+    [SerializeField]
+    private SelectableValue _selectObject;
 
     public void Update()
     {
@@ -21,16 +21,17 @@ public class MouseInteractionsHandler : MonoBehaviour
             return;
         }
 
-        var mainBuilding = hits
-            .Select(hit => hit.collider.GetComponentInParent<IUnitProducer>())
+        var selectable = hits
+            .Select(hit => hit.collider.GetComponentInParent<ISelectable>())
             .Where(c => c != null)
             .FirstOrDefault();
 
-        if (mainBuilding == default)
-        {
-            return;
-        }
+        _selectObject.SetValue(selectable);
 
-        mainBuilding.ProduceUnit();
+        if (selectable is IUnitProducer)
+        {
+            var mainBuilding = (IUnitProducer)selectable;
+            mainBuilding.ProduceUnit();
+        }
     }
 }
