@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public sealed class ProduceUnitCommand : IProduceUnitCommand
+public class ProduceUnitCommand : IProduceUnitCommand
 {
     [InjectAsset("UnitViking")]
     private GameObject _unitPrefab;

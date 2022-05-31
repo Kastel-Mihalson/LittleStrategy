@@ -7,10 +7,10 @@ public static class AssetsInjector
 
     public static T Inject<T>(this AssetsContext context, T target)
     {
-        var targetType = target.GetType();
+        var targetType = target.GetType().BaseType;
         var allFields = targetType.GetFields(
             BindingFlags.NonPublic |
-            BindingFlags.Public | 
+            BindingFlags.Public |
             BindingFlags.Instance);
 
         for (int i = 0; i < allFields.Length; i++)

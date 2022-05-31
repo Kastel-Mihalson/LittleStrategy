@@ -48,11 +48,5 @@ public class MouseInteractionsPresenter : MonoBehaviour
         {
             selectable.SetSelected();
         }
-
-        //if (selectable is IUnitProducer)
-        //{
-        //    var mainBuilding = (IUnitProducer)selectable;
-        //    mainBuilding.ProduceUnit();
-        //}
     }
 }
