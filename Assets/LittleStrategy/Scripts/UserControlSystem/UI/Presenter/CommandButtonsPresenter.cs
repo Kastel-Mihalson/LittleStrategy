@@ -41,15 +41,41 @@ public class CommandButtonsPresenter : MonoBehaviour
 
     private void OnButtonClick(ICommandExecutor commandExecutor)
     {
-        var unitProducer = commandExecutor as CommandExecutorBase<IProduceUnitCommand>;
-
-        if (unitProducer != null)
+        switch (commandExecutor)
         {
-            unitProducer.ExecuteSpecificCommand(_context.Inject(new ProduceUnitCommand()));
-            return;
+            case var ce when commandExecutor as CommandExecutorBase<IProduceUnitCommand>:
+                if (ce != null)
+                {
+                    ce.ExecuteCommand(_context.Inject(new ProduceUnitCommandHeir()));
+                }
+                break;
+            case var ce when commandExecutor as CommandExecutorBase<IAttackCommand>:
+                if (ce != null)
+                {
+                    ce.ExecuteCommand(new AttackCommand());
+                }
+                break;
+            case var ce when commandExecutor as CommandExecutorBase<IMoveCommand>:
+                if (ce != null)
+                {
+                    ce.ExecuteCommand(new MoveCommand());
+                }
+                break;
+            case var ce when commandExecutor as CommandExecutorBase<IPatrolCommand>:
+                if (ce != null)
+                {
+                    ce.ExecuteCommand(new PatrolCommand());
+                }
+                break;
+            case var ce when commandExecutor as CommandExecutorBase<IStopCommand>:
+                if (ce != null)
+                {
+                    ce.ExecuteCommand(new StopCommand());
+                }
+                break;
+            default:
+                throw new ApplicationException($"{nameof(CommandButtonsPresenter)}.{nameof(OnButtonClick)}:" +
+                    $"Unknown type of commands executor: {commandExecutor.GetType().FullName}!");
         }
-
-        throw new ApplicationException($"{nameof(CommandButtonsPresenter)}.{nameof(OnButtonClick)}:" +
-            $"Unknown type of commands executor: {commandExecutor.GetType().FullName}!");
     }
 }
