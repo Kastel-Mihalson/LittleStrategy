@@ -1,9 +1,7 @@
 using UnityEngine;
 
-public class MainBuilding : MonoBehaviour, IUnitProducer, ISelectable
+public class MainBuilding : CommandExecutorBase<IProduceUnitCommand>, ISelectable
 {
-    [SerializeField]
-    private GameObject _unitPrefab;
     [SerializeField]
     private Transform _unitsParent;
     [SerializeField]
@@ -21,9 +19,9 @@ public class MainBuilding : MonoBehaviour, IUnitProducer, ISelectable
     public float MaxHealth => _maxHealth;
     public Sprite Icon => _icon;
 
-    public void ProduceUnit()
+    public override void ExecuteSpecificCommand(IProduceUnitCommand command)
     {
-        Instantiate(_unitPrefab, 
+        Instantiate(command.UnitPrefab, 
             new Vector3(Random.Range(-10, 10), 0, Random.Range(10, -10)),
             Quaternion.identity, _unitsParent);
     }

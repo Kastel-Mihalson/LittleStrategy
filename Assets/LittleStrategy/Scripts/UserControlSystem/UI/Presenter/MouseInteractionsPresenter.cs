@@ -1,5 +1,6 @@
 using System.Linq;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class MouseInteractionsPresenter : MonoBehaviour
 {
@@ -7,11 +8,18 @@ public class MouseInteractionsPresenter : MonoBehaviour
     private Camera _camera;
     [SerializeField]
     private SelectableValue _selectObject;
+    [SerializeField]
+    private EventSystem _eventSystem;
 
     private ISelectable _activeSelectabeObject;
 
     public void Update()
     {
+        if (_eventSystem.IsPointerOverGameObject())
+        {
+            return;
+        }
+
         if (!Input.GetMouseButtonUp(0))
         {
             return;
@@ -39,12 +47,6 @@ public class MouseInteractionsPresenter : MonoBehaviour
         if (selectable != null)
         {
             selectable.SetSelected();
-        }
-
-        if (selectable is IUnitProducer)
-        {
-            var mainBuilding = (IUnitProducer)selectable;
-            mainBuilding.ProduceUnit();
         }
     }
 }
