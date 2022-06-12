@@ -156,6 +156,7 @@ MonoBehaviour:
   _selectObject: {fileID: 11400000, guid: 625a3b5d18eed7241afa469dc0287e41, type: 2}
   _eventSystem: {fileID: 920866009}
   _groundClicksRMB: {fileID: 11400000, guid: 1f485bd86f58aa749800fe3a62f907b5, type: 2}
+  _attackablesRMB: {fileID: 11400000, guid: 5ad32fc8b94c01542a74c8622b6f6cac, type: 2}
   _groundTransform: {fileID: 2013808347}
 --- !u!4 &13817119
 Transform:
@@ -6428,6 +6429,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _legacyContext: {fileID: 11400000, guid: 6aa7245fc237a2f42926757e2c4ada69, type: 2}
   _vector3Value: {fileID: 11400000, guid: 1f485bd86f58aa749800fe3a62f907b5, type: 2}
+  _attackableValue: {fileID: 11400000, guid: 5ad32fc8b94c01542a74c8622b6f6cac, type: 2}
+  _selectableValue: {fileID: 11400000, guid: 625a3b5d18eed7241afa469dc0287e41, type: 2}
 --- !u!1 &1806350756
 GameObject:
   m_ObjectHideFlags: 0

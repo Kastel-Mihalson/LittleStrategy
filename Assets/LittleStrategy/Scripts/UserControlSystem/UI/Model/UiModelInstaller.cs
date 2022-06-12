@@ -9,6 +9,12 @@ public class UiModelInstaller : MonoInstaller
     [SerializeField]
     private Vector3Value _vector3Value;
 
+    [SerializeField]
+    private AttackableValue _attackableValue;
+
+    [SerializeField]
+    private SelectableValue _selectableValue;
+
     public override void InstallBindings()
     {
         Container
@@ -18,6 +24,14 @@ public class UiModelInstaller : MonoInstaller
         Container
             .Bind<Vector3Value>()
             .FromInstance(_vector3Value);
+
+        Container
+            .Bind<AttackableValue>()
+            .FromInstance(_attackableValue);
+
+        Container
+            .Bind<SelectableValue>()
+            .FromInstance(_selectableValue);
 
         Container
             .Bind<CommandCreatorBase<IProduceUnitCommand>>()

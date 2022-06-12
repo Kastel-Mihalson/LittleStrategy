@@ -556,6 +556,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _unitPrefab: {fileID: 0}
   _unitsParent: {fileID: 0}
+  _rockTransform: {fileID: 2134246716436511688}
   _maxHealth: 100
   _icon: {fileID: 21300000, guid: 6c82c7a2d0c9caf4e812b24a42742881, type: 3}
   _selected: {fileID: 3967327309269300454}

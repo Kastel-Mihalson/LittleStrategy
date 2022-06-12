@@ -6,22 +6,28 @@ public class BottomLefPresenter : MonoBehaviour
 {
     [SerializeField]
     private TextMeshProUGUI _selectedName;
+
     [SerializeField]
     private Image _selectedImage;
+
     [SerializeField]
     private Slider _healthSlider;
+
     [SerializeField]
     private TextMeshProUGUI _text;
+
     [SerializeField]
     private Image _sliderBacnkground;
+
     [SerializeField]
     private Image _sliderFillImage;
+
     [SerializeField]
     private SelectableValue _selectedValue;
 
     private void Start()
     {
-        _selectedValue.OnSelected += onSelected;
+        _selectedValue.OnNewValue += onSelected;
         onSelected(_selectedValue.CurrentValue);
     }
 

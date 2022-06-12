@@ -1,13 +1,19 @@
 using UnityEngine;
 
-public class MainBuilding : CommandExecutorBase<IProduceUnitCommand>, ISelectable
+public class MainBuilding : CommandExecutorBase<IProduceUnitCommand>, ISelectable, IAttackable
 {
     [SerializeField]
     private Transform _unitsParent;
+
+    [SerializeField]
+    private Transform _buildTransform;
+
     [SerializeField]
     private float _maxHealth = 1000;
+
     [SerializeField]
     private Sprite _icon;
+
     [SerializeField]
     private GameObject _selected;
 
@@ -18,6 +24,8 @@ public class MainBuilding : CommandExecutorBase<IProduceUnitCommand>, ISelectabl
     public float Health => _health;
     public float MaxHealth => _maxHealth;
     public Sprite Icon => _icon;
+
+    public Transform PivotPoint => _buildTransform;
 
     public override void ExecuteSpecificCommand(IProduceUnitCommand command)
     {
