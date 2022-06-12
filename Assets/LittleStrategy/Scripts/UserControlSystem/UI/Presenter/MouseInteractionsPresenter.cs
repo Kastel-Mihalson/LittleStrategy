@@ -47,20 +47,9 @@ public class MouseInteractionsPresenter : MonoBehaviour
 
         if (Input.GetMouseButtonUp(0))
         {
-            if (_activeSelectabeObject != null)
-            {
-                _activeSelectabeObject.UnsetSelected();
-            }
-
             if (WeHit<ISelectable>(hits, out var selectable))
             {
                 _selectObject.SetValue(selectable);
-                _activeSelectabeObject = selectable;
-
-                if (selectable != null)
-                {
-                    selectable.SetSelected();
-                }
             }
         }
         else

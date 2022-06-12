@@ -133,6 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 13817119}
   - component: {fileID: 13817118}
+  - component: {fileID: 13817120}
   m_Layer: 0
   m_Name: MouseInteractionHandler
   m_TagString: Untagged
@@ -172,6 +173,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &13817120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 13817117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2418556059805a14da02d90aff6f3203, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _selectableValue: {fileID: 11400000, guid: 625a3b5d18eed7241afa469dc0287e41, type: 2}
 --- !u!1001 &20105627
 PrefabInstance:
   m_ObjectHideFlags: 0
