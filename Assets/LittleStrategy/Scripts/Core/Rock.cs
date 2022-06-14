@@ -1,15 +1,22 @@
 using UnityEngine;
 
-public class Rock : MonoBehaviour, ISelectable
+public class Rock : MonoBehaviour, ISelectable, IAttackable
 {
     [SerializeField]
     private GameObject _unitPrefab;
+
     [SerializeField]
     private Transform _unitsParent;
+
+    [SerializeField]
+    private Transform _rockTransform;
+
     [SerializeField]
     private float _maxHealth = 100;
+
     [SerializeField]
     private Sprite _icon;
+
     [SerializeField]
     private GameObject _selected;
 
@@ -20,6 +27,8 @@ public class Rock : MonoBehaviour, ISelectable
     public float Health => _health;
     public float MaxHealth => _maxHealth;
     public Sprite Icon => _icon;
+
+    public Transform PivotPoint => _rockTransform;
 
     public void UnsetSelected()
     {

@@ -1800,6 +1800,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _unitPrefab: {fileID: 0}
   _unitsParent: {fileID: 0}
+  _unitTransform: {fileID: 2098727062033145191}
   _maxHealth: 150
   _icon: {fileID: 21300000, guid: e2014fb2c90ae1d4da1c557149cf618a, type: 3}
   _selected: {fileID: 1314262017514269500}

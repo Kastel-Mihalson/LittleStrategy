@@ -72,8 +72,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1767805fd9472cc4f9879f68f1ff0092, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _unitPrefab: {fileID: 8326372663974757433, guid: a5266365e1058194a8aeb3f699a74399, type: 3}
   _unitsParent: {fileID: 0}
+  _buildTransform: {fileID: 1311665620450807055}
   _maxHealth: 1000
   _icon: {fileID: 21300000, guid: d775396ab0df55340bc3044fed2c1524, type: 3}
   _selected: {fileID: 9208313033902841422}
