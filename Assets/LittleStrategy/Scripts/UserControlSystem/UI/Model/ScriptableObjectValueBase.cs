@@ -1,8 +1,47 @@
 using System;
 using UnityEngine;
 
-public abstract class ScriptableObjectValueBase<T> : ScriptableObject
+public abstract class ScriptableObjectValueBase<T> : ScriptableObject, IAwaitable<T>
 {
+    public class NewValueNotifier<TAwaited> : IAwaiter<TAwaited>
+    {
+        private readonly ScriptableObjectValueBase<TAwaited> _scriptableObjectValueBase;
+        private TAwaited _result;
+        private Action _continuation;
+        private bool _isCompleted;
+
+        public NewValueNotifier(ScriptableObjectValueBase<TAwaited> scriptableObjectValueBase)
+        {
+            _scriptableObjectValueBase = scriptableObjectValueBase;
+            _scriptableObjectValueBase.OnNewValue += OnNewValue;
+        }
+
+        public bool IsCompleted => _isCompleted;
+
+
+        public void OnCompleted(Action continuation)
+        {
+            if (_isCompleted)
+            {
+                continuation?.Invoke();
+            }
+            else
+            {
+                _continuation = continuation;
+            }
+        }
+
+        public TAwaited GetResult() => _result;
+
+        private void OnNewValue(TAwaited obj)
+        {
+            _scriptableObjectValueBase.OnNewValue -= OnNewValue;
+            _result = obj;
+            _isCompleted = true;
+            _continuation?.Invoke();
+        }
+    }
+
     public T CurrentValue { get; private set; }
 
     public Action<T> OnNewValue;
@@ -11,5 +50,10 @@ public abstract class ScriptableObjectValueBase<T> : ScriptableObject
     {
         CurrentValue = value;
         OnNewValue?.Invoke(value);
+    }
+
+    public IAwaiter<T> GetAwaiter()
+    {
+        return new NewValueNotifier<T>(this);
     }
 }
