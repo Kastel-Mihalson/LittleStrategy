@@ -24,8 +24,6 @@ public class MouseInteractionsPresenter : MonoBehaviour
 
     private Plane _groundPlane;
 
-    private ISelectable _activeSelectabeObject;
-
     private void Start()
     {
         _groundPlane = new Plane(_groundTransform.up, 0);

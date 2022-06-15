@@ -9,11 +9,9 @@ public class UnitMovementStop : MonoBehaviour, IAwaitable<AsyncExtensions.Void>
     [SerializeField]
     private NavMeshAgent _agent;
 
-    public class StopAwaiter : IAwaiter<AsyncExtensions.Void>
+    public class StopAwaiter : AwaiterBase<AsyncExtensions.Void>
     {
         private readonly UnitMovementStop _unitMovementStop;
-        private Action _continuation;
-        private bool _isCompleted;
 
         public StopAwaiter(UnitMovementStop unitMovementStop)
         {
@@ -24,24 +22,8 @@ public class UnitMovementStop : MonoBehaviour, IAwaitable<AsyncExtensions.Void>
         private void onStop()
         {
             _unitMovementStop.OnStop -= onStop;
-            _isCompleted = true;
-            _continuation?.Invoke();
+            OnWaitFinish(new AsyncExtensions.Void());
         }
-
-        public void OnCompleted(Action continuation)
-        {
-            if (_isCompleted)
-            {
-                continuation?.Invoke();
-            }
-            else
-            {
-                _continuation = continuation;
-            }
-        }
-
-        public bool IsCompleted => _isCompleted;
-        public AsyncExtensions.Void GetResult() => new AsyncExtensions.Void();
     }
 
     void Update()
