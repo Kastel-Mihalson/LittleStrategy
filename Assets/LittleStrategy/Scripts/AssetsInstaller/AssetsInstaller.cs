@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using Zenject;
 
@@ -18,9 +19,8 @@ public class AssetsInstaller : ScriptableObjectInstaller<AssetsInstaller>
 
     public override void InstallBindings()
     {
-        Container.Bind<IAwaitable<IAttackable>>()
-            .FromInstance(_attackableClicksRMB);
-        Container.Bind<IAwaitable<Vector3>>()
-            .FromInstance(_groundClicksRMB);
+        Container.Bind<IAwaitable<IAttackable>>().FromInstance(_attackableClicksRMB);
+        Container.Bind<IAwaitable<Vector3>>().FromInstance(_groundClicksRMB);
+        Container.Bind<IObservable<ISelectable>>().FromInstance(_selectables);
     }
 }
