@@ -1,3 +1,5 @@
+using System.Threading;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class MainBuilding : CommandExecutorBase<IProduceUnitCommand>, ISelectable, IAttackable
@@ -27,9 +29,16 @@ public class MainBuilding : CommandExecutorBase<IProduceUnitCommand>, ISelectabl
 
     public Transform PivotPoint => _buildTransform;
 
-    public override void ExecuteSpecificCommand(IProduceUnitCommand command)
+    public override async void ExecuteSpecificCommand(IProduceUnitCommand command)
     {
-        Instantiate(command.UnitPrefab, 
+        await ProduceUnitAsync(command);
+    }
+
+    private async Task ProduceUnitAsync(IProduceUnitCommand command)
+    {
+        await Task.Delay(2000);
+
+        Instantiate(command.UnitPrefab,
             new Vector3(Random.Range(-10, 10), 0, Random.Range(10, -10)),
             Quaternion.identity, _unitsParent);
     }
