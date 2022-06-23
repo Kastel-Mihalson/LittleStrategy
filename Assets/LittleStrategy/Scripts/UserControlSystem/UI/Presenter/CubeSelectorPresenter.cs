@@ -1,16 +1,18 @@
+using System;
 using UnityEngine;
+using Zenject;
+using UniRx;
 
 public class CubeSelectorPresenter : MonoBehaviour
 {
-    [SerializeField]
-    private SelectableValue _selectableValue;
+    [Inject]
+    private IObservable<ISelectable> _selectedValue;
 
     private ISelectable _activeSelectabeObject;
 
     public void Start()
     {
-        _selectableValue.OnNewValue += OnSelected;
-        OnSelected(_selectableValue.CurrentValue);
+        _selectedValue.Subscribe(OnSelected);
     }
 
     private void OnSelected(ISelectable selected)
