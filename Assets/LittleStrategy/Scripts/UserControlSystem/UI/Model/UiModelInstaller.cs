@@ -61,5 +61,15 @@ public class UiModelInstaller : MonoInstaller
         Container
             .Bind<CommandButtonsModel>()
             .AsTransient();
+
+        Container
+            .Bind<float>()
+            .WithId("UnitViking")
+            .FromInstance(5f);
+
+        Container
+            .Bind<string>()
+            .WithId("UnitViking")
+            .FromInstance("UnitViking");
     }
 }
