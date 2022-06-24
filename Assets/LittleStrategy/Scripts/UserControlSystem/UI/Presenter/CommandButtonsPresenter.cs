@@ -6,11 +6,11 @@ using UniRx;
 
 public class CommandButtonsPresenter : MonoBehaviour
 {
-    [Inject]
-    private IObservable<ISelectable> _selectedValue;
-
     [SerializeField]
     private CommandButtonsView _view;
+
+    [Inject]
+    private IObservable<ISelectable> _selectedValue;
 
     [Inject]
     private CommandButtonsModel _model;

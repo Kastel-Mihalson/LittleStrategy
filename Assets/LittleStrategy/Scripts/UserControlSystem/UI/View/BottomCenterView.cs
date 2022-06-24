@@ -34,10 +34,10 @@ public class BottomCenterView : MonoBehaviour
         {
             var index = i;
 
-            _buttons[i].onClick.AddListener(() =>
-            _cancelButtonClicks.OnNext(index));
+            _buttons[i].onClick.AddListener(() => _cancelButtonClicks.OnNext(index));
         }
     }
+
     public void Clear()
     {
         for (int i = 0; i < _images.Length; i++)

@@ -11,7 +11,7 @@ public class BottomCenterModel : MonoBehaviour
     public void Init(IObservable<ISelectable> currentlySelected)
     {
         UnitProducers = currentlySelected
-        .Select(selectable => selectable as Component)
-        .Select(component => component?.GetComponent<IUnitProducer>());
+            .Select(selectable => selectable as Component)
+            .Select(component => component?.GetComponent<IUnitProducer>());
     }
 }
