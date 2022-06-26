@@ -1,12 +1,9 @@
 using UnityEngine;
 
-public interface ISelectable : IHealthHolder
+public interface ISelectable : IHealthHolder, IIconHolder
 {
     string Name { get; }
-    float Health { get; }
-    float MaxHealth { get; }
     Transform PivotPoint { get; }
-    Sprite Icon { get; }
 
     void SetSelected();
     void UnsetSelected();
